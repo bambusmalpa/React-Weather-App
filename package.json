@@ -6,17 +6,20 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "gh-pages": "^2.0.1",
     "npm": "^6.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
-    "recharts": "^1.5.0"
+    "recharts": "^1.5.0",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject" 
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
