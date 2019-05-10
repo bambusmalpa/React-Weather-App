@@ -38,9 +38,9 @@
 
 }
 
-.cityListItem--element--image{
-  height: 50px;
-  width: 50px;
+.cityListItem--element--weatherIcon{
+  font-size: 40px;
+  columns: #000000;
   animation: iconGrow 1s ease;
 }
 .container{
@@ -75,13 +75,11 @@
 
 @keyframes iconGrow{
   from{
-    height: 0px;
-    width: 0px;
+    font-size: 0px;
   }
 
   to{
-    height: 50px;
-    width: 50px;
+   font-size: 40px;
   }
 }
 

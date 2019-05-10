@@ -4,7 +4,7 @@ function CustomTooltip({ payload, active }) {
   
   if (active) {
     
-    const url=`http://openweathermap.org/img/w/${payload[0].payload.icon}.png`
+    const url=`https://openweathermap.org/img/w/${payload[0].payload.icon}.png`
     return (
       <div className="container">
 

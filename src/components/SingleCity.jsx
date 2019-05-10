@@ -4,10 +4,12 @@ import cloud from "../icon/cloud.png"
 import Chart from "./ForecastPage"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChartLine, faTimes, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { faChartLine, faTimes, faTimesCircle, faCloudSunRain, faSun,faMoon,faCloudSun,faCloudMoon,faCloud,faCloudRain,faCloudMoonRain,faBolt,faSnowflake,faWater } from '@fortawesome/free-solid-svg-icons'
 
 
-library.add(faChartLine,faTimes, faTimesCircle)
+library.add(faChartLine, faTimes, faTimesCircle, faCloudSunRain, faSun,faMoon,faCloudSun,faCloudMoon,faCloud,faCloudRain,faCloudMoonRain,faBolt,faSnowflake,faWater )
+const iconsOfConditions=["sun","moon","cloud-sun","cloud-moon","cloud","cloud","cloud","cloud","cloud-rain","cloud-rain","cloud-sun-rain","cloud-moon-rain","bolt","bolt","snowflake","snowflake","water","water"]
+const listOfIconCodes=["01d","01n","02d","02n","03d","03n","04d","04n","09d","09n","10d","10n","11d","11n","11d","11n","50d","50n"]
 
 class SingleCity extends React.Component{
 constructor(props){
@@ -23,7 +25,8 @@ constructor(props){
     forecastOn:false,
     forecast:false,
     forecastData:"",
-    foreCastButtonContent:"POKAŻ PROGNOZĘ"
+    foreCastButtonContent:"POKAŻ PROGNOZĘ",
+    
   }}
 
 fetchDataCurrentTemp=()=>{
@@ -37,8 +40,12 @@ fetchDataCurrentTemp=()=>{
           code:resp.cod,
           temperature:`${Math.round(resp.main.temp)}°C`,
           description:resp.weather[0].description,
-          icon:`http://openweathermap.org/img/w/${resp.weather[0].icon}.png`
+          icon:<FontAwesomeIcon icon={iconsOfConditions[listOfIconCodes.indexOf(resp.weather[0].icon)]} />,
+         
+          // icon:`https://openweathermap.org/img/w/${resp.weather[0].icon}.png`
+          // listOfIconCodes.indexOf(resp.weather[0].icon)
         })
+        
         //forecast data fetched only if city is on a list.
         this.fetchDataForecast()
       }
@@ -48,7 +55,7 @@ fetchDataCurrentTemp=()=>{
             code:resp.cod,
             temperature:"Brak danych",
             description:"Brak danych",
-            icon:cloud
+            icon:<FontAwesomeIcon icon="times" />
           })
         }
         
@@ -117,7 +124,7 @@ render(){
   const{temperature,icon,description,code,forecastData}=this.state;
   const spinner=<div className="spinner-border text-danger" role="status"></div>;
   const elementClass="cityListItem--element";
-  const cityName=name.charAt(0).toUpperCase()+name.slice(1)
+  const cityName=name.charAt(0).toUpperCase()+name.slice(1);
   return(
     
   
@@ -130,8 +137,9 @@ render(){
           <div className={elementClass}>{code?temperature:spinner}</div>
 
           <div className={elementClass}>
-            <img className="cityListItem--element--image"src={icon} title={description} alt={description}/></div>
-
+            <div className="cityListItem--element--weatherIcon">{this.state.icon}</div>
+            {/* <img className="cityListItem--element--image"src={icon} title={description} alt={description}/></div> */}
+          </div>
           <div className={elementClass}>
           <button className={this.state.code===200?"btn btn-success icon":"btn btn-outline-secondary icon"} 
                     name={name} 
@@ -141,7 +149,7 @@ render(){
           </button></div>    
             
           <div className={elementClass}>
-            <button className={"btn btn-danger icon"} name={name} onClick={this.props.deleteCity}>{window.innerWidth>=900?"USUŃ MIASTO":<FontAwesomeIcon icon="times" />}
+            <button className={"btn btn-danger icon"} name={name} onClick={this.props.deleteCity}>{window.innerWidth>=900?"USUŃ MIASTO":<FontAwesomeIcon icon="times"/>}
             </button></div>
 
           
