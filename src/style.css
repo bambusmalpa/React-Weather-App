@@ -40,7 +40,6 @@
 
 .cityListItem--element--weatherIcon{
   font-size: 40px;
-  columns: #000000;
   animation: iconGrow 1s ease;
 }
 .container{
