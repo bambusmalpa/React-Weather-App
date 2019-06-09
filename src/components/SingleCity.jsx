@@ -97,13 +97,13 @@ openForecast=()=>{
   if(this.state.code===200&&this.state.forecastOn===false){
     this.setState({
       forecastOn:true,
-      foreCastButtonContent:"UKRYJ PROGNOZĘ"
+      foreCastButtonContent:"PROGNOZA"
     })
   }
   if(this.state.forecastOn===true){
     this.setState({
       forecastOn:false,
-      foreCastButtonContent:"POKAŻ PROGNOZĘ"
+      foreCastButtonContent:"PROGNOZA"
     })
   }
         
@@ -141,7 +141,7 @@ render(){
           </button></div>    
             
           <div className={elementClass}>
-            <button className={"btn btn-danger icon"} name={name} onClick={this.props.deleteCity}>{window.innerWidth>=900?"USUŃ MIASTO":<FontAwesomeIcon icon="times" />}
+            <button className={"btn btn-danger icon"} name={name} onClick={this.props.deleteCity}>{window.innerWidth>=900?"USUŃ":<FontAwesomeIcon icon="times" />}
             </button></div>
 
           
